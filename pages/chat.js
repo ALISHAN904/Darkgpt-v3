@@ -142,7 +142,7 @@ export default function Chat() {
 
   return (
     <div style={styles.page}>
-      <aside style={{ ...styles.sidebar, ...(sidebarOpen ? styles.sidebarOpen : {}) }}>
+      <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`} style={{ ...styles.sidebar, ...(sidebarOpen ? styles.sidebarOpen : {}) }}>
         <button style={styles.newChatBtn} onClick={createNewChat}>
           + new chat
         </button>
