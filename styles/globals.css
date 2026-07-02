@@ -1,86 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --bg: #0b0c0e;
-  --bg-panel: #131417;
-  --border: #232529;
-  --amber: #ffb400;
-  --amber-dim: #a87700;
-  --text: #e8e6df;
-  --text-dim: #7a7d84;
+  --bg-page: #0a0a0a;
+  --bg-panel: #111111;
+  --border: #2a2a2a;
+  --amber: #ffb000;
+  --text: #e8e8e8;
+  --text-dim: #888888;
 }
 
 html, body {
-  background: var(--bg);
+  height: 100%;
+  background: var(--bg-page);
   color: var(--text);
   font-family: 'IBM Plex Mono', monospace;
-  height: 100%;
+  overflow-x: hidden;
 }
 
-#__next {
-  height: 100%;
-}
-
-a {
-  color: inherit;
-}
-
-::selection {
-  background: var(--amber);
-  color: #0b0c0e;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--amber-dim);
-}
-
-button, .primary-btn {
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-button:active {
-  transform: scale(0.97);
-}
-
-button:focus-visible,
-textarea:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--amber);
-  outline-offset: 2px;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
 @keyframes blink {
   50% { opacity: 0; }
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    width: 80% !important;
+    max-width: 280px !important;
+    z-index: 100 !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.25s ease !important;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+  }
 
-@keyframes floatSpin {
-  0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
-  25% { transform: translateY(-24px) rotateX(90deg) rotateY(45deg); }
-  50% { transform: translateY(0px) rotateX(180deg) rotateY(90deg); }
-  75% { transform: translateY(24px) rotateX(270deg) rotateY(135deg); }
-  100% { transform: translateY(0px) rotateX(360deg) rotateY(180deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  .sidebar.open {
+    transform: translateX(0) !important;
   }
 }
